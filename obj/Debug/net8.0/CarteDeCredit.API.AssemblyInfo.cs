@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CarteDeCredit.API")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ee2904bc8c5b9d2ceb451a6265663d5d87fca09e")]
 [assembly: System.Reflection.AssemblyProductAttribute("CarteDeCredit.API")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CarteDeCredit.API")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
