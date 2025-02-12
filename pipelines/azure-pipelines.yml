@@ -5,6 +5,8 @@ variables:
   serviceConnection : 'sc-azure'
   appName: 'CarteCreditAPI01'
   containerRegistry: 'cartecredit.azurecr.io'
+  acrUsername: $(username)
+  acrPassword: $(password)
   acrServiceConnection : 'sc-acr'
   imageRepository: 'carteCredit'
   resourceGroup: 'rg-TP4'
@@ -47,5 +49,5 @@ stages:
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
-                az container create -g $(resourceGroup) --name $(appName) --image $(containerRegistry)/$(imageRepository):$(tag) --registry-password $(password) --registry-username $(username) --cpu 1 --memory 1
+                az container create -g $(resourceGroup) --name $(appName) --image $(containerRegistry)/$(imageRepository):$(tag) --os-type Linux --registry-password $(acrPassword) --registry-username $(acrUsername) --cpu 1 --memory 1
              displayName: 'Déploiement sur Azure Container Instance'
