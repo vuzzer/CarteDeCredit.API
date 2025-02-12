@@ -7,6 +7,7 @@ variables:
   containerRegistry: 'cartecredit.azurecr.io'
   acrServiceConnection : 'sc-acr'
   imageRepository: 'carteCredit'
+  resourceGroup: 'rg-TP4'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
 
@@ -40,9 +41,10 @@ stages:
         runOnce:
          deploy:
            steps:
-           - task: AzureWebAppContainer@1
+           - task: AzureCLI@2
              inputs:
-               azureSubscription: '$(serviceConnection)'
-               appName: '$(appName)'
-               containers: '$(containerRegistry)/$(imageRepository):$(tag)'
-             displayName: 'Déploiement sur Azure Web App For Container'
+              azureSubscription: 'sc-azure'
+              scriptType: 'bash'
+              scriptLocation: 'inlineScript'
+              inlineScript: 'az container create -g $(resourceGroup) --name $(appName) --image $(containerRegistry)/$(imageRepository):$(tag) --cpu 1 --memory 1'
+             displayName: 'Déploiement sur Azure Container Instance'
