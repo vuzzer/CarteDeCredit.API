@@ -46,5 +46,6 @@ stages:
               azureSubscription: 'sc-azure'
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
-              inlineScript: 'az container create -g $(resourceGroup) --name $(appName) --image $(containerRegistry)/$(imageRepository):$(tag) --cpu 1 --memory 1'
+              inlineScript: |
+                az container create -g $(resourceGroup) --name $(appName) --image $(containerRegistry)/$(imageRepository):$(tag) --registry-password $(password) --registry-username $(username) --cpu 1 --memory 1
              displayName: 'Déploiement sur Azure Container Instance'
