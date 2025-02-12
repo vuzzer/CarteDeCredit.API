@@ -4,9 +4,9 @@ trigger:
 variables:
   serviceConnection : 'sc-azure'
   appName: 'CarteCredits.API'
-  containerRegistry: 'acrdemodas.azurecr.io'
+  containerRegistry: 'cartecredit.azurecr.io'
   acrServiceConnection : 'sc-acr'
-  imageRepository: 'democours'
+  imageRepository: 'carteCredit'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
 
