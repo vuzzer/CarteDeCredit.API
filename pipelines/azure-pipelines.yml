@@ -3,7 +3,7 @@ trigger:
 
 variables:
   serviceConnection : 'sc-azure'
-  appName: 'CarteCreditAPI01'
+  appName: 'cartedecredits'
   containerRegistry: 'cartecredit.azurecr.io'
   acrUsername: $(username)
   acrPassword: $(password)
