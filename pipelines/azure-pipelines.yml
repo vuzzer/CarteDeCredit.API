@@ -3,7 +3,7 @@ trigger:
 
 variables:
   serviceConnection : 'sc-azure'
-  appName: 'cartedecredits'
+  container: 'cartedecredits'
   containerRegistry: 'cartecredit.azurecr.io'
   acrUsername: $(username)
   acrPassword: $(password)
@@ -12,6 +12,7 @@ variables:
   resourceGroup: 'rg-TP4'
   dockerfilePath: '**/Dockerfile'
   tag: '$(Build.BuildId)'
+  PORT: '8080'
 
 stages:
 - stage : 'Build' 
@@ -49,5 +50,5 @@ stages:
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
-                az container create -g $(resourceGroup) --name $(appName) --image $(imageRepository):$(tag) --os-type Linux --registry-login-server $(containerRegistry)  --registry-password $(acrPassword) --registry-username $(acrUsername) --cpu 1 --memory 1
+                az container create -g $(resourceGroup) --name $(container) --image $(containerRegistry)/$(imageRepository):$(tag) --os-type Linux --dns-name-label $(container) --ports $(PORT) --registry-login-server $(containerRegistry)  --registry-password $(acrPassword) --registry-username $(acrUsername) --cpu 1 --memory 1
              displayName: 'Déploiement sur Azure Container Instance'
