@@ -49,6 +49,5 @@ stages:
               scriptType: 'bash'
               scriptLocation: 'inlineScript'
               inlineScript: |
-                echo $(acrPassword)
                 az container create -g $(resourceGroup) --name $(appName) --image $(containerRegistry)/$(imageRepository):$(tag) --os-type Linux --registry-login-server $(containerRegistry)  --registry-password $(acrPassword) --registry-username $(acrUsername) --cpu 1 --memory 1
              displayName: 'Déploiement sur Azure Container Instance'
